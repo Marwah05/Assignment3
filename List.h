@@ -2,7 +2,7 @@
 #include <iostream>
 #include <memory>
 
-template <typename T>
+template <typename T> // hehe
 class List {
 public:
     virtual ~List() = default;
