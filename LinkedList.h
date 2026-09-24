@@ -2,7 +2,7 @@
 // Created by marwa on 9/17/2026.
 //
 
-#pragma once //hehe
+#pragma once
 #include "Node.h"
 #include "List.h"
 
