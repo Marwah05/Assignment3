@@ -7,4 +7,5 @@ add_executable(untitled main.cpp
         ArrayList.h
         Node.h
         LinkedList.h
-        List.h)
+        List.h
+        Data.h)

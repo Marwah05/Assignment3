@@ -1,13 +1,19 @@
 //
 // Created by marwa on 9/17/2026.
 //
-
-#ifndef UNTITLED_DATA_H
-#define UNTITLED_DATA_H
-
+#pragma once
+#include <ostream>
+#include <string>
 
 class Data {
+public:
+    Data(int numID, const std::string& name)
+        : numID_(numID), name_(name) {}
+
+    bool operator==(const Data& other) const {
+        return numID_ == other.numID_;
+    }
+private:
+    int numID_;
+    std::string name_;
 };
-
-
-#endif //UNTITLED_DATA_H
