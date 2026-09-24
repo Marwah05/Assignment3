@@ -10,11 +10,5 @@ public:
     T *value;
     Node<T> *next;
 
-    Node(T *value) {
-        this->value = value;
-        next = nullptr;
-    }
-    void print() {
-        value->print();
-    }
+    explicit Node(T* value) : data(value), next(nullptr) {}
 };

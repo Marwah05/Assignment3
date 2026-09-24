@@ -12,65 +12,50 @@ template <typename T>
 class ArrayList {
 public:
     ArrayList():size(0) {
-
     }
-    void add(T item) { // O(n) - adds to the beginning of the list
-        if (size>=CAPACITY) {
-            cout<<"Array is full" <<endl;
+
+    void addFront(T* value) override {
+        if (size_ >= CAPACITY) {
+            std::cout << "List is full." << std::endl;
             return;
         }
-        for (int i=size;i>0;i--) { // describe what this loop does
-            data[i]=data[i-1];
+        for (int i = size_; i > 0; i--) {
+            data_[i] = data_[i - 1];
         }
-        data[0]=item;
-        size++;
+        data_[0] = value;
+        ++size_;
     }
-    void deleteFront() { // O(n) - deletes the front of the list
-            if (size==0) {
-                cout<<"Array is empty." <<endl;
-                return;
-            }
-            for (int i=0;i<size-1;i++) {
-                // figure out why it's size -1
-                data[i]=data[i+1];
-            }
-            size--;
+
+    void deleteFront() override {
+        if (size_ == 0) {
+            std::cout << "List is empty." << std::endl;
+            return;
         }
-    bool search(T item) { // O(n) - searches through the list
-        if (size==0) {
-            cout<<"Array is empty"<<endl;
-            return false;
+        delete data_[0];
+        for (int i = 0; i < size_ - 1; ++i) {
+            data_[i] = data_[i + 1];
         }
-        for (int i=0;i<size;i++) {
-            if (data[i]==item) {
-                return true;
-            }
+        --size_;
+    }
+
+    bool search(T* value) const override {
+        for (int i = 0; i < size_; ++i) {
+            if (data_[i] == *value) return true;
         }
         return false;
     }
 
-    void addEnd(T item) { // O(1) - adds to the end of the list
-        if (size==CAPACITY) {
-            cout<<"Array is full." <<endl;
-            return;
+    void print() const override {
+        for (int i = 0; i < size_; ++i) {
+            std::cout << data_[i] << ",";
         }
-        data[size] = item;
-        size++;
+        std::cout << std::endl;
     }
 
-    void deleteEnd() { // O(1) - deletes the end of the list
-        if (size==0) {
-            cout<<"Array is empty." <<endl;
-            return;
+    ~ArrayList() override {
+        for (int i = 0; i < size_; ++i) {
+            delete data_[i];
         }
-        size--;
-    }
-
-    void printArray() {
-        for (int i=0;i<size;i++) {
-            cout<<data[i]<<",";
-        }
-        cout<<endl;
     }
 
 private:
